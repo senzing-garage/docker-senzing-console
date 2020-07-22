@@ -8,7 +8,7 @@ a running Docker container configured to run Senzing programs.
 ## Overview
 
 The default behavior when running `docker run` is for the container to "sleep".
-This allows a user to "`docker exec ...`" into the container and run Senzing programs.
+This allows a user to "`docker exec`" into the container and run Senzing programs.
 Python commands located in `/opt/senzing/g2/python` can be run in the docker container.
 
 ### Contents
@@ -58,7 +58,6 @@ describing where we can improve.   Now on with the show...
 ## Related artifacts
 
 1. [DockerHub](https://hub.docker.com/r/senzing/senzing-console)
-1. [Helm Chart](https://github.com/Senzing/charts/tree/master/charts/senzing-console)
 
 ## Expectations
 
