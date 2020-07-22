@@ -1,27 +1,20 @@
-# docker-senzing-debug
+# docker-senzing-console
 
-## Preamble
+## Synopsis
 
-At [Senzing](http://senzing.com),
-we strive to create GitHub documentation in a
-"[don't make me think](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/dont-make-me-think.md)" style.
-For the most part, instructions are copy and paste.
-Whenever thinking is needed, it's marked with a "thinking" icon :thinking:.
-Whenever customization is needed, it's marked with a "pencil" icon :pencil2:.
-If the instructions are not clear, please let us know by opening a new
-[Documentation issue](https://github.com/Senzing/docker-senzing-debug/issues/new?template=documentation_request.md)
-describing where we can improve.   Now on with the show...
+The `senzing/senzing-console` docker image is used for creating
+a running Docker container configured to run Senzing programs.
 
 ## Overview
 
-The `senzing/senzing-debug` docker image is used for debugging Senzing deployments.
-When is run, it "sleeps".
-This allows a user to "`docker exec ...`" into the container and inspect the Senzing environment.
-
+The default behavior when running `docker run` is for the container to "sleep".
+This allows a user to "`docker exec ...`" into the container and run Senzing programs.
 Python commands located in `/opt/senzing/g2/python` can be run in the docker container.
 
 ### Contents
 
+1. [Preamble](#preamble)
+    1. [Legend](#legend)
 1. [Related artifacts](#related-artifacts)
 1. [Expectations](#expectations)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
@@ -42,7 +35,19 @@ Python commands located in `/opt/senzing/g2/python` can be run in the docker con
 1. [Errors](#errors)
 1. [References](#references)
 
-#### Legend
+## Preamble
+
+At [Senzing](http://senzing.com),
+we strive to create GitHub documentation in a
+"[don't make me think](https://github.com/Senzing/knowledge-base/blob/master/WHATIS/dont-make-me-think.md)" style.
+For the most part, instructions are copy and paste.
+Whenever thinking is needed, it's marked with a "thinking" icon :thinking:.
+Whenever customization is needed, it's marked with a "pencil" icon :pencil2:.
+If the instructions are not clear, please let us know by opening a new
+[Documentation issue](https://github.com/Senzing/docker-senzing-console/issues/new?template=documentation_request.md)
+describing where we can improve.   Now on with the show...
+
+### Legend
 
 1. :thinking: - A "thinker" icon means that a little extra thinking may be required.
    Perhaps there are some choices to be made.
@@ -52,8 +57,8 @@ Python commands located in `/opt/senzing/g2/python` can be run in the docker con
 
 ## Related artifacts
 
-1. [DockerHub](https://hub.docker.com/r/senzing/senzing-debug)
-1. [Helm Chart](https://github.com/Senzing/charts/tree/master/charts/senzing-debug)
+1. [DockerHub](https://hub.docker.com/r/senzing/senzing-console)
+1. [Helm Chart](https://github.com/Senzing/charts/tree/master/charts/senzing-console)
 
 ## Expectations
 
@@ -196,7 +201,6 @@ Unset environment variables have no effect on the
 
     ```console
     sudo docker run \
-      --cap-add=ALL \
       --interactive \
       --rm \
       --tty \
@@ -207,7 +211,7 @@ Unset environment variables have no effect on the
       ${SENZING_NETWORK_PARAMETER} \
       ${SENZING_RUNAS_USER_PARAMETER} \
       ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
-      senzing/senzing-debug
+      senzing/senzing-console
     ```
 
 1. For more examples of use, see [Examples of Docker](#examples-of-docker).
@@ -235,7 +239,7 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
     ```console
     export GIT_ACCOUNT=senzing
-    export GIT_REPOSITORY=docker-senzing-debug
+    export GIT_REPOSITORY=docker-senzing-console
     export GIT_ACCOUNT_DIR=~/${GIT_ACCOUNT}.git
     export GIT_REPOSITORY_DIR="${GIT_ACCOUNT_DIR}/${GIT_REPOSITORY}"
     ```
@@ -248,15 +252,15 @@ see [Environment Variables](https://github.com/Senzing/knowledge-base/blob/maste
 
     ```console
     sudo docker build \
-      --tag senzing/senzing-debug \
-      https://github.com/senzing/docker-senzing-debug.git
+      --tag senzing/senzing-console \
+      https://github.com/senzing/docker-senzing-console.git
     ```
 
 1. **Option #2:** Using `docker` command and local repository.
 
     ```console
     cd ${GIT_REPOSITORY_DIR}
-    sudo docker build --tag senzing/senzing-debug .
+    sudo docker build --tag senzing/senzing-console .
     ```
 
 1. **Option #3:** Using `make` command.
