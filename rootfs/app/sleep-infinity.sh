@@ -22,7 +22,7 @@ if [[ ( ! -z ${INSTALL_MYSQL_CLIENT} ) ]]; then
     # Get and install extra client objects to use odbc with mysql
     wget https://dev.mysql.com/get/Downloads/Connector-ODBC/8.0/mysql-connector-odbc_8.0.20-1debian10_amd64.deb
     wget https://dev.mysql.com/get/Downloads/MySQL-8.0/mysql-common_8.0.20-1debian10_amd64.deb
-    wget https://dev.mysql.com/get/Downloads/MySQL-8.0/libmysqlclient21_8.0.20-1debian10_amd64.deb
+    wget http://repo.mysql.com/apt/debian/pool/mysql-8.0/m/mysql-community/libmysqlclient21_8.0.20-1debian10_amd64.deb
     
     apt install ./mysql-connector-odbc_8.0.20-1debian10_amd64.deb
     apt install ./mysql-common_8.0.20-1debian10_amd64.deb
