@@ -200,6 +200,7 @@ Unset environment variables have no effect on the
 
     ```console
     sudo docker run \
+      --cap-add=ALL \
       --interactive \
       --rm \
       --tty \
