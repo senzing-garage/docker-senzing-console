@@ -21,20 +21,24 @@ RUN apt-get update \
     fio \
     htop \
     iotop \
-    ipython \
+    ipython3 \
     itop \
     less \
+    libpq-dev \
     net-tools \
     odbc-postgresql \
     procps \
     pstack \
+    python-dev \
     python-pyodbc \
     python-setuptools \
     strace \
+    telnet \
     tree \
     unixodbc \
     unixodbc-dev \
     vim \
+    zip \
  && rm -rf /var/lib/apt/lists/*
 
 # Install packages via pip.
@@ -60,7 +64,7 @@ RUN pip3 install --upgrade pip \
       setuptools \
       six==1.12.0 \
       werkzeug==0.14.1 \
-      psycopg2-binary
+      psycopg2
 
 # Copy files from repository.
 
