@@ -1,11 +1,11 @@
-ARG BASE_IMAGE=senzing/senzing-base:1.6.1
+ARG BASE_IMAGE=senzing/senzing-base:1.6.2
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2021-07-15
+ENV REFRESHED_AT=2021-10-11
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
-      Version="1.0.3"
+      Version="1.0.4"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
@@ -47,7 +47,7 @@ COPY requirements.txt ./
 RUN pip3 install --upgrade pip \
  && pip3 install -r requirements.txt \
  && rm /requirements.txt
- 
+
 # Copy files from repository.
 
 COPY ./rootfs /
