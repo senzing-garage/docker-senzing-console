@@ -214,7 +214,7 @@ Unset environment variables have no effect on the
       senzing/senzing-console
     ```
 
-1. :warning: if using the the z-shell (`zsh`) then you'll need to modify
+    :warning: if using the the z-shell (`zsh`) then you'll need to modify
 how you run the container.
     Zsh example:
 
