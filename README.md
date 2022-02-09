@@ -196,7 +196,7 @@ Unset environment variables have no effect on the
 `docker run` command and may be removed or remain.
 
 1. Run Docker container.
-   Example:
+   Bash example:
 
     ```console
     sudo docker run \
@@ -216,7 +216,7 @@ Unset environment variables have no effect on the
 
 1. :warning: if using the the z-shell (`zsh`) then you'll need to modify
 how you run the container.
-    For example:
+    Zsh example:
 
     ```console
     sudo docker run \
