@@ -213,9 +213,11 @@ Unset environment variables have no effect on the
       ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
       senzing/senzing-console
     ```
+
 :warning: if using the the z-shell (`zsh`) then you'll need to modify
 how you run the container.
-Example:
+For example:
+
     ```console
     sudo docker run \
       --cap-add=ALL \
