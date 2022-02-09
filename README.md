@@ -21,6 +21,7 @@ Python commands located in `/opt/senzing/g2/python` can be run in the docker con
     1. [Prerequisites for Docker](#prerequisites-for-docker)
     1. [Docker volumes](#docker-volumes)
     1. [Docker network](#docker-network)
+    1. [Docker user](#docker-user)
     1. [MySQL support](#mysql-support)
     1. [Run Docker container](#run-docker-container)
 1. [Develop](#develop)
@@ -151,6 +152,31 @@ Inside the Docker container, Senzing artifacts will be located in `/opt/senzing`
     export SENZING_NETWORK_PARAMETER="--net ${SENZING_NETWORK}"
     ```
 
+### Docker user
+
+:thinking: **Optional:**  The Docker container runs as "USER 1001".
+Use if a different userid (UID) is required.
+
+1. :pencil2: Identify user.
+    1. **Example #1:** Use specific UID. User "0" is `root`.
+
+        ```console
+        export SENZING_RUNAS_USER="0"
+        ```
+
+    1. **Example #2:** Use current user.
+
+        ```console
+        export SENZING_RUNAS_USER=$(id -u)
+        ```
+
+1. Construct parameter for `docker run`.
+   Example:
+
+    ```console
+    export SENZING_RUNAS_USER_PARAMETER="--user ${SENZING_RUNAS_USER}"
+    ```
+
 ### MySQL support
 
 :thinking: **Optional:**  If a MySQL database will be accessed, the MySQL client needs to be installed at runtime.
@@ -183,42 +209,7 @@ Unset environment variables have no effect on the
       --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
       --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
       ${SENZING_NETWORK_PARAMETER} \
-      ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
-      senzing/senzing-console
-    ```
-
-:thinking: **Optional:**  The Docker container runs as "USER 0" (root).
-Use if a different userid (UID) is required.
-Reference: [docker run --user](https://docs.docker.com/engine/reference/run/#user)
-
-1. :pencil2: Identify user.
-    1. **Example #1:** Use specific UID. User "0" is `root`.
-
-        ```console
-        export SENZING_RUNAS_USER="0"
-        ```
-
-    1. **Example #2:** Use current user.
-
-        ```console
-        export SENZING_RUNAS_USER=$(id -u):$(id -g)
-        ```
-
-1. Run the [`docker run`](https://docs.docker.com/engine/reference/commandline/run/) command.
-   Example:
-
-    ```console
-    sudo docker run \
-      --cap-add=ALL \
-      --interactive \
-      --rm \
-      --tty \
-      --volume ${SENZING_DATA_VERSION_DIR}:/opt/senzing/data \
-      --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
-      --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
-      --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
-      --user ${SENZING_RUNAS_USER} \
-      ${SENZING_NETWORK_PARAMETER} \
+      ${SENZING_RUNAS_USER_PARAMETER} \
       ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
       senzing/senzing-console
     ```
