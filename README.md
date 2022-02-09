@@ -196,7 +196,7 @@ Unset environment variables have no effect on the
 `docker run` command and may be removed or remain.
 
 1. Run Docker container.
-   BASH example:
+   #### BASH example:
 
     ```console
     sudo docker run \
@@ -213,10 +213,11 @@ Unset environment variables have no effect on the
       ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
       senzing/senzing-console
     ```
+    <details><summary>ZSH example:</summary>
+    <p>
 
     :warning: if using the the z-shell (`zsh`) then you'll need to modify
 how you run the container.
-    ZSH example:
 
     ```console
     sudo docker run \
@@ -233,6 +234,9 @@ how you run the container.
       ${=SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
       senzing/senzing-console
     ```
+
+    </p>
+    </details>
 
 
 1. For more examples of use, see [Examples of Docker](#examples-of-docker).
