@@ -69,5 +69,5 @@ ENV PYTHONUNBUFFERED=1
 
 # Runtime execution.
 
-WORKDIR /home/senzing
+WORKDIR /app
 CMD ["/app/sleep-infinity.sh"]
