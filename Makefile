@@ -26,6 +26,14 @@ docker-build:
 		--tag $(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		.
 
+.PHONY: docker-build-slim
+docker-build-slim:
+	docker build \
+		--file Dockerfile-slim \
+	    --tag $(DOCKER_IMAGE_NAME)-slim \
+		--tag $(DOCKER_IMAGE_NAME)-slim:$(GIT_VERSION) \
+		.
+
 # -----------------------------------------------------------------------------
 # Clean up targets
 # -----------------------------------------------------------------------------
@@ -36,8 +44,14 @@ docker-rmi-for-build:
 		$(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		$(DOCKER_IMAGE_NAME)
 
+.PHONY: docker-rmi-for-build-slim
+docker-rmi-for-build-slim:
+	-docker rmi --force \
+		$(DOCKER_IMAGE_NAME)-slim:$(GIT_VERSION) \
+		$(DOCKER_IMAGE_NAME)-slim
+
 .PHONY: clean
-clean: docker-rmi-for-build docker-rmi-for-build-development-cache
+clean: docker-rmi-for-build docker-rmi-for-build-slim
 
 # -----------------------------------------------------------------------------
 # Help
