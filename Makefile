@@ -51,7 +51,7 @@ docker-rmi-for-build-slim:
 		$(DOCKER_IMAGE_NAME)-slim
 
 .PHONY: clean
-clean: docker-rmi-for-build docker-rmi-for-build-slim docker-rmi-for-build-development-cache
+clean: docker-rmi-for-build docker-rmi-for-build-slim
 
 # -----------------------------------------------------------------------------
 # Help
