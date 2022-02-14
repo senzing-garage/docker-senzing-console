@@ -60,7 +60,7 @@ RUN echo "export LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:
 COPY ./rootfs /
 
 # Make non-root container.
-RUN useradd -u 1001 senzing
+RUN useradd --create-home --uid 1001 senzing
 USER senzing
 
 
@@ -70,5 +70,5 @@ ENV PYTHONUNBUFFERED=1
 
 # Runtime execution.
 
-WORKDIR /app
+WORKDIR /home/senzing
 CMD ["/app/sleep-infinity.sh"]
