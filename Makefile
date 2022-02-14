@@ -7,6 +7,7 @@ GIT_VERSION := $(shell git describe --always --tags --long --dirty | sed -e 's/\
 
 DOCKER_IMAGE_TAG ?= $(GIT_REPOSITORY_NAME):$(GIT_VERSION)
 DOCKER_IMAGE_NAME := senzing/senzing-console
+DOCKER_IMAGE_NAME_SLIM := senzing/console-slim
 
 # -----------------------------------------------------------------------------
 # The first "make" target runs as default.
@@ -26,6 +27,14 @@ docker-build:
 		--tag $(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		.
 
+.PHONY: docker-build-slim
+docker-build-slim:
+	docker build \
+		--file Dockerfile-slim \
+	    --tag $(DOCKER_IMAGE_NAME_SLIM) \
+		--tag $(DOCKER_IMAGE_NAME_SLIM):$(GIT_VERSION) \
+		.
+
 # -----------------------------------------------------------------------------
 # Clean up targets
 # -----------------------------------------------------------------------------
@@ -36,8 +45,14 @@ docker-rmi-for-build:
 		$(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		$(DOCKER_IMAGE_NAME)
 
+.PHONY: docker-rmi-for-build-slim
+docker-rmi-for-build-slim:
+	-docker rmi --force \
+		$(DOCKER_IMAGE_NAME_SLIM):$(GIT_VERSION) \
+		$(DOCKER_IMAGE_NAME_SLIM)
+
 .PHONY: clean
-clean: docker-rmi-for-build docker-rmi-for-build-development-cache
+clean: docker-rmi-for-build docker-rmi-for-build-slim docker-rmi-for-build-development-cache
 
 # -----------------------------------------------------------------------------
 # Help
