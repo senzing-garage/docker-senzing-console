@@ -79,14 +79,14 @@ RUN apt-get update \
 
 # Configure our shell.
 
-RUN echo "export LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:/opt/IBM/db2/clidriver/lib" >> /root/.bashrc \
- && echo "export ODBCSYSINI=/etc/opt/senzing" >> /root/.bashrc \
- && echo "export PATH=${PATH}:/opt/senzing/g2/python:/opt/IBM/db2/clidriver/adm:/opt/IBM/db2/clidriver/bin" >> /root/.bashrc \
- && echo "export PYTHONPATH=/opt/senzing/g2/python" >> /root/.bashrc \
- && echo "export SENZING_ETC_PATH=/etc/opt/senzing" >> /root/.bashrc \
- && echo "export TERM=xterm" >> /root/.bashrc \
- && echo "export LC_ALL=C" >> /root/.bashrc \
- && echo "export LANGUAGE=C" >> /root/.bashrc
+RUN echo "export LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:/opt/IBM/db2/clidriver/lib" >> /etc/bash.bashrc \
+ && echo "export ODBCSYSINI=/etc/opt/senzing" >> /etc/bash.bashrc \
+ && echo "export PATH=${PATH}:/opt/senzing/g2/python:/opt/IBM/db2/clidriver/adm:/opt/IBM/db2/clidriver/bin" >> /etc/bash.bashrc \
+ && echo "export PYTHONPATH=/opt/senzing/g2/python" >> /etc/bash.bashrc \
+ && echo "export SENZING_ETC_PATH=/etc/opt/senzing" >> /etc/bash.bashrc \
+ && echo "export TERM=xterm" >> /etc/bash.bashrc \
+ && echo "export LC_ALL=C" >> /etc/bash.bashrc \
+ && echo "export LANGUAGE=C" >> /etc/bash.bashrc
 
 # Copy files from repository.
 
@@ -95,6 +95,14 @@ COPY ./rootfs /
 # Copy python virtual environment from the builder image.
 
 COPY --from=builder /app/venv /app/venv
+
+# Make non-root container.
+
+USER 1001
+
+# Make sure all messages always reach console.
+
+ENV PYTHONUNBUFFERED=1
 
 # Activate virtual environment.
 
