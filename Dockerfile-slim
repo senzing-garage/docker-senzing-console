@@ -22,6 +22,7 @@ USER root
 RUN apt-get update \
  && apt-get -y install \
       elvis-tiny \
+      less \
       libaio1 \
       libpq-dev \
       librdkafka-dev \
@@ -34,6 +35,10 @@ RUN apt-get update \
  && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
+# Make non-root container.
+RUN useradd -u 1001 sz
+USER sz
+
 # Install packages via PIP.
 
 COPY requirements.txt .
@@ -43,24 +48,20 @@ RUN pip3 install --upgrade pip \
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
-# Configure our shell.
-
-RUN echo "export LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:/opt/IBM/db2/clidriver/lib" >> /etc/bash.bashrc \
- && echo "export ODBCSYSINI=/etc/opt/senzing" >> /etc/bash.bashrc \
- && echo "export PATH=${PATH}:/opt/senzing/g2/python:/opt/IBM/db2/clidriver/adm:/opt/IBM/db2/clidriver/bin" >> /etc/bash.bashrc \
- && echo "export PYTHONPATH=/opt/senzing/g2/python" >> /etc/bash.bashrc \
- && echo "export SENZING_ETC_PATH=/etc/opt/senzing" >> /etc/bash.bashrc \
- && echo "export TERM=xterm" >> /etc/bash.bashrc \
- && echo "export LC_ALL=C" >> /etc/bash.bashrc \
- && echo "export LANGUAGE=C" >> /etc/bash.bashrc
-
 # Copy files from repository.
 
 COPY ./rootfs /
 
-# Make non-root container.
+# Configure our shell.
 
-USER 1001
+ENV LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:/opt/IBM/db2/clidriver/lib
+ENV ODBCSYSINI=/etc/opt/senzing
+ENV PATH=${PATH}:/opt/senzing/g2/python:/opt/IBM/db2/clidriver/adm:/opt/IBM/db2/clidriver/bin
+ENV PYTHONPATH=/opt/senzing/g2/python
+ENV SENZING_ETC_PATH=/etc/opt/senzing
+ENV TERM=xterm
+ENV LC_ALL=C
+ENV LANGUAGE=C
 
 # Make sure all messages always reach console.
 
