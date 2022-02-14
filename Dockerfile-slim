@@ -53,7 +53,7 @@ RUN echo "export LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:
  && echo "export SENZING_ETC_PATH=/etc/opt/senzing" >> /etc/bash.bashrc \
  && echo "export TERM=xterm" >> /etc/bash.bashrc \
  && echo "export LC_ALL=C" >> /etc/bash.bashrc \
- && echo "export LANGUAGE=C" >> /etc/bash.bashrc
+ && echo "export LANGUAGE=C" >> /etc/bash.bashrc 
 
 # Copy files from repository.
 
