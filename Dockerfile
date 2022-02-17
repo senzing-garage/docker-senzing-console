@@ -8,11 +8,11 @@ FROM ${BASE_IMAGE} as builder
 
 # Set Shell to use for RUN commands in builder step.
 
-ENV REFRESHED_AT=2022-02-09
+ENV REFRESHED_AT=2022-02-17
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
-      Version="1.0.5"
+      Version="1.0.6"
 
 # Build arguments.
 
@@ -49,11 +49,11 @@ RUN mkdir /tmp/fio \
 
 FROM ${BASE_IMAGE}
 
-ENV REFRESHED_AT=2022-02-09
+ENV REFRESHED_AT=2022-02-17
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
-      Version="1.0.5"
+      Version="1.0.6"
 
 HEALTHCHECK CMD ["/app/healthcheck.sh"]
 
