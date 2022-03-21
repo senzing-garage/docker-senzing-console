@@ -8,7 +8,7 @@ FROM ${BASE_IMAGE} AS builder
 
 # Set Shell to use for RUN commands in builder step.
 
-ENV REFRESHED_AT=2022-03-17
+ENV REFRESHED_AT=2022-03-21
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
@@ -51,7 +51,7 @@ RUN mkdir /tmp/fio \
 
 FROM ${BASE_IMAGE} AS runner
 
-ENV REFRESHED_AT=2022-03-17
+ENV REFRESHED_AT=2022-03-21
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
