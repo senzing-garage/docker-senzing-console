@@ -6,17 +6,23 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.1.0] - 2022-04-13
+
+### Added in 1.1.0
+
+- Support for migration from Senzing V2 to V3, `/app/migrate-senzing-2-to-3.sh`
+
 ## [1.0.8] - 2022-04-01
 
 ### Changed in 1.0.8
 
- - Update to Debian 11.3
+- Update to Debian 11.3
 
 ## [1.0.7] - 2022-03-21
 
 ### Changed in 1.0.7
 
- - Support for `libcrypto` and `libssl`
+- Support for `libcrypto` and `libssl`
 
 ## [1.0.6] - 2022-02-17
 
