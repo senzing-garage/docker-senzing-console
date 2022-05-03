@@ -8,11 +8,11 @@ FROM ${BASE_IMAGE} AS builder
 
 # Set Shell to use for RUN commands in builder step.
 
-ENV REFRESHED_AT=2022-04-19
+ENV REFRESHED_AT=2022-05-22
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
-      Version="1.1.1"
+      Version="1.1.2"
 
 # Run as "root" for system installation.
 
@@ -51,11 +51,11 @@ RUN mkdir /tmp/fio \
 
 FROM ${BASE_IMAGE} AS runner
 
-ENV REFRESHED_AT=2022-04-19
+ENV REFRESHED_AT=2022-05-02
 
 LABEL Name="senzing/senzing-console" \
       Maintainer="support@senzing.com" \
-      Version="1.1.1"
+      Version="1.1.2"
 
 # Define health check.
 
@@ -112,7 +112,7 @@ COPY --from=builder "/usr/local/bin/fio" "/usr/local/bin/fio"
 # Runtime environment variables.
 
 ENV LANGUAGE=C
-ENV LC_ALL=C
+ENV LC_ALL=C.UTF-8
 ENV LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:/opt/IBM/db2/clidriver/lib
 ENV ODBCSYSINI=/etc/opt/senzing
 ENV PATH=${PATH}:/opt/senzing/g2/python:/opt/IBM/db2/clidriver/adm:/opt/IBM/db2/clidriver/bin
