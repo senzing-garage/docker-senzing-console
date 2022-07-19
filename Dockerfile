@@ -12,7 +12,7 @@ FROM ${BASE_IMAGE} AS builder
 
 # Set Shell to use for RUN commands in builder step.
 
-ENV REFRESHED_AT=2022-06-27
+ENV REFRESHED_AT=2022-07-19
 
 # Run as "root" for system installation.
 
@@ -107,9 +107,9 @@ COPY --from=builder "/usr/local/bin/fio" "/usr/local/bin/fio"
 
 # Runtime environment variables.
 
-ENV LC_ALL=C.UTF-8
-ENV SENZING_ETC_PATH=/etc/opt/senzing
-ENV SENZING_SSHD_SHOW_PERFORMANCE_WARNING=true
+ENV LC_ALL=C.UTF-8 \
+    SENZING_ETC_PATH=/etc/opt/senzing \
+    SENZING_SSHD_SHOW_PERFORMANCE_WARNING=true
 
 # Runtime execution.
 
