@@ -1,4 +1,8 @@
-ARG BASE_IMAGE=debian:11.3-slim@sha256:f6957458017ec31c4e325a76f39d6323c4c21b0e31572efa006baa927a160891
+ARG BASE_IMAGE=senzing/senzingapi-tools:latest
+
+ARG IMAGE_NAME="senzing/senzing-console"
+ARG IMAGE_MAINTAINER="support@senzing.com"
+ARG IMAGE_VERSION="1.1.2"
 
 # -----------------------------------------------------------------------------
 # Stage: builder
@@ -10,32 +14,28 @@ FROM ${BASE_IMAGE} AS builder
 
 ENV REFRESHED_AT=2022-06-27
 
-LABEL Name="senzing/senzing-console" \
-      Maintainer="support@senzing.com" \
-      Version="1.1.2"
-
 # Run as "root" for system installation.
 
 USER root
 
 # Install packages via apt for building fio.
 
-RUN apt-get update \
- && apt-get -y install \
+RUN apt update \
+ && apt -y install \
       gcc \
       make \
       pkg-config \
       unzip \
       wget \
-      && rm -rf /var/lib/apt/lists/*
+ && rm -rf /var/lib/apt/lists/*
 
 # Work around until Debian repos catch up to modern versions of fio.
 
 RUN mkdir /tmp/fio \
  && cd /tmp/fio \
- && wget https://github.com/axboe/fio/archive/refs/tags/fio-3.27.zip \
- && unzip fio-3.27.zip \
- && cd fio-fio-3.27/ \
+ && wget https://github.com/axboe/fio/archive/refs/tags/fio-3.30.zip \
+ && unzip fio-3.30.zip \
+ && cd fio-fio-3.30/ \
  && ./configure \
  && make \
  && make install \
@@ -51,11 +51,13 @@ RUN mkdir /tmp/fio \
 
 FROM ${BASE_IMAGE} AS runner
 
-ENV REFRESHED_AT=2022-06-27
+ARG IMAGE_NAME
+ARG IMAGE_MAINTAINER
+ARG IMAGE_VERSION
 
-LABEL Name="senzing/senzing-console" \
-      Maintainer="support@senzing.com" \
-      Version="1.1.2"
+LABEL Name=${IMAGE_NAME} \
+      Maintainer=${IMAGE_MAINTAINER} \
+      Version=${IMAGE_VERSION}
 
 # Define health check.
 
@@ -67,31 +69,25 @@ USER root
 
 # Install packages via apt.
 
-RUN apt-get update \
- && apt-get -y install \
-      curl \
+RUN apt update \
+ && apt -y install \
       elvis-tiny \
       htop \
       iotop \
       jq \
       less \
-      libpq-dev \
-      libssl1.1 \
       net-tools \
-      odbcinst \
       openssh-server \
       postgresql-client \
       procps \
       python3-dev \
       python3-pip \
-      sqlite3 \
       strace \
       tree \
-      unixodbc-dev \
       unzip \
       wget \
       zip \
- && apt-get clean \
+ && apt clean \
  && rm -rf /var/lib/apt/lists/*
 
 # Install packages via pip.
@@ -111,18 +107,9 @@ COPY --from=builder "/usr/local/bin/fio" "/usr/local/bin/fio"
 
 # Runtime environment variables.
 
-ENV LANGUAGE=C
 ENV LC_ALL=C.UTF-8
-ENV LD_LIBRARY_PATH=/opt/senzing/g2/lib:/opt/senzing/g2/lib/debian:/opt/IBM/db2/clidriver/lib
-ENV ODBCSYSINI=/etc/opt/senzing
-ENV PATH=${PATH}:/opt/senzing/g2/python:/opt/IBM/db2/clidriver/adm:/opt/IBM/db2/clidriver/bin
-ENV PYTHONPATH=/opt/senzing/g2/python
-ENV PYTHONUNBUFFERED=1
-ENV SENZING_DOCKER_LAUNCHED=true
 ENV SENZING_ETC_PATH=/etc/opt/senzing
-ENV SENZING_SKIP_DATABASE_PERFORMANCE_TEST=true
 ENV SENZING_SSHD_SHOW_PERFORMANCE_WARNING=true
-ENV TERM=xterm
 
 # Runtime execution.
 
