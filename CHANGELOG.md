@@ -8,7 +8,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-- removed psutils from requirements.txt
+- removed psutils and duplicate packages from requirements.txt
 
 ## [1.1.2] - 2022-05-02
 
