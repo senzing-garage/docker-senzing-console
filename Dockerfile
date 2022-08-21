@@ -75,7 +75,6 @@ RUN apt update \
       htop \
       iotop \
       jq \
-      less \
       net-tools \
       openssh-server \
       postgresql-client \
@@ -107,8 +106,7 @@ COPY --from=builder "/usr/local/bin/fio" "/usr/local/bin/fio"
 
 # Runtime environment variables.
 
-ENV LC_ALL=C.UTF-8 \
-    SENZING_ETC_PATH=/etc/opt/senzing \
+ENV SENZING_ETC_PATH=/etc/opt/senzing \
     SENZING_SSHD_SHOW_PERFORMANCE_WARNING=true
 
 # Runtime execution.
