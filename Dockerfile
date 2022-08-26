@@ -4,6 +4,7 @@ ARG IMAGE_NAME="senzing/senzing-console"
 ARG IMAGE_MAINTAINER="support@senzing.com"
 ARG IMAGE_VERSION="1.2.0"
 
+
 # -----------------------------------------------------------------------------
 # Stage: builder
 # -----------------------------------------------------------------------------
@@ -12,7 +13,9 @@ FROM ${BASE_IMAGE} AS builder
 
 # Set Shell to use for RUN commands in builder step.
 
+
 ENV REFRESHED_AT=2022-08-26
+
 
 # Run as "root" for system installation.
 
@@ -51,9 +54,11 @@ RUN mkdir /tmp/fio \
 
 FROM ${BASE_IMAGE} AS runner
 
+
 ARG IMAGE_NAME
 ARG IMAGE_MAINTAINER
 ARG IMAGE_VERSION
+
 
 LABEL Name=${IMAGE_NAME} \
       Maintainer=${IMAGE_MAINTAINER} \
