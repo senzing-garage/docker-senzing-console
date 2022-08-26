@@ -2,7 +2,7 @@ ARG BASE_IMAGE=senzing/senzingapi-tools:latest
 
 ARG IMAGE_NAME="senzing/senzing-console"
 ARG IMAGE_MAINTAINER="support@senzing.com"
-ARG IMAGE_VERSION="1.1.2"
+ARG IMAGE_VERSION="1.2.0"
 
 # -----------------------------------------------------------------------------
 # Stage: builder
@@ -12,7 +12,7 @@ FROM ${BASE_IMAGE} AS builder
 
 # Set Shell to use for RUN commands in builder step.
 
-ENV REFRESHED_AT=2022-07-19
+ENV REFRESHED_AT=2022-08-26
 
 # Run as "root" for system installation.
 

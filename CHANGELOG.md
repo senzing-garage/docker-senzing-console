@@ -8,7 +8,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+-
+
+## [1.2.0] - 2022-08-26
+
+### Changed in 1.2.0
+
 - removed psutils and duplicate packages from requirements.txt
+- update to use `senzingapi-tools` base image
 
 ## [1.1.2] - 2022-05-02
 
