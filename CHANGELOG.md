@@ -6,6 +6,17 @@ The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 [markdownlint](https://dlaa.me/markdownlint/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+-
+
+## [1.2.0] - 2022-08-26
+
+### Changed in 1.2.0
+
+- removed psutils and duplicate packages from requirements.txt
+- update to use `senzingapi-tools` base image
+
 ## [1.1.2] - 2022-05-02
 
 ### Changed in 1.1.2
