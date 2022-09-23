@@ -4,7 +4,6 @@ ARG IMAGE_NAME="senzing/senzing-console"
 ARG IMAGE_MAINTAINER="support@senzing.com"
 ARG IMAGE_VERSION="1.2.0"
 
-
 # -----------------------------------------------------------------------------
 # Stage: builder
 # -----------------------------------------------------------------------------
@@ -13,15 +12,15 @@ FROM ${BASE_IMAGE} AS builder
 
 # Set Shell to use for RUN commands in builder step.
 
-
-ENV REFRESHED_AT=2022-08-26
-
+ENV REFRESHED_AT=2022-09-23
 
 # Run as "root" for system installation.
 
 USER root
 
 # Install packages via apt for building fio.
+
+ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
  && apt-get -y install \
@@ -54,11 +53,9 @@ RUN mkdir /tmp/fio \
 
 FROM ${BASE_IMAGE} AS runner
 
-
 ARG IMAGE_NAME
 ARG IMAGE_MAINTAINER
 ARG IMAGE_VERSION
-
 
 LABEL Name=${IMAGE_NAME} \
       Maintainer=${IMAGE_MAINTAINER} \
@@ -74,6 +71,8 @@ USER root
 
 # Install packages via apt.
 
+ENV DEBIAN_FRONTEND noninteractive
+
 RUN apt-get update \
  && apt-get -y install \
       elvis-tiny \
@@ -86,12 +85,12 @@ RUN apt-get update \
       procps \
       python3-dev \
       python3-pip \
+      python3-pyodbc \
       strace \
       tree \
       unzip \
       wget \
       zip \
- && apt-get clean \
  && rm -rf /var/lib/apt/lists/*
 
 # Install packages via pip.
