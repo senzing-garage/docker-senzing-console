@@ -197,48 +197,43 @@ Unset environment variables have no effect on the
 `docker run` command and may be removed or remain.
 
 1. Run Docker container.
-   #### BASH example:
 
-    ```console
-    sudo docker run \
-      --cap-add=ALL \
-      --interactive \
-      --rm \
-      --tty \
-      --volume ${SENZING_DATA_VERSION_DIR}:/opt/senzing/data \
-      --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
-      --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
-      --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
-      ${SENZING_NETWORK_PARAMETER} \
-      ${SENZING_RUNAS_USER_PARAMETER} \
-      ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
-      senzing/senzing-console
-    ```
-    <details><summary>ZSH example:</summary>
-    <p>
+    1. BASH example:
 
-    :warning: if using the the z-shell (`zsh`) then you'll need to modify
-how you run the container.
+        ```console
+        sudo docker run \
+          --cap-add=ALL \
+          --interactive \
+          --rm \
+          --tty \
+          --volume ${SENZING_DATA_VERSION_DIR}:/opt/senzing/data \
+          --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
+          --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
+          --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
+          ${SENZING_NETWORK_PARAMETER} \
+          ${SENZING_RUNAS_USER_PARAMETER} \
+          ${SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
+          senzing/senzing-console
+        ```
 
-    ```console
-    sudo docker run \
-      --cap-add=ALL \
-      --interactive \
-      --rm \
-      --tty \
-      --volume ${SENZING_DATA_VERSION_DIR}:/opt/senzing/data \
-      --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
-      --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
-      --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
-      ${=SENZING_NETWORK_PARAMETER} \
-      ${=SENZING_RUNAS_USER_PARAMETER} \
-      ${=SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
-      senzing/senzing-console
-    ```
+    1. ZSH example:
+    :warning: if using the the z-shell (`zsh`) then you'll need to modify how you run the container.
 
-    </p>
-    </details>
-
+        ```console
+        sudo docker run \
+          --cap-add=ALL \
+          --interactive \
+          --rm \
+          --tty \
+          --volume ${SENZING_DATA_VERSION_DIR}:/opt/senzing/data \
+          --volume ${SENZING_ETC_DIR}:/etc/opt/senzing \
+          --volume ${SENZING_G2_DIR}:/opt/senzing/g2 \
+          --volume ${SENZING_VAR_DIR}:/var/opt/senzing \
+          ${=SENZING_NETWORK_PARAMETER} \
+          ${=SENZING_RUNAS_USER_PARAMETER} \
+          ${=SENZING_INSTALL_MYSQL_CLIENT_PARAMETER} \
+          senzing/senzing-console
+        ```
 
 1. For more examples of use, see [Examples of Docker](#examples-of-docker).
 
