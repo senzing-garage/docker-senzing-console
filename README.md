@@ -17,7 +17,6 @@ Python commands located in `/opt/senzing/g2/python` can be run in the docker con
 1. [Expectations](#expectations)
 1. [Demonstrate using Docker](#demonstrate-using-docker)
     1. [Prerequisites for Docker](#prerequisites-for-docker)
-    1. [Docker volumes](#docker-volumes)
     1. [MySQL support](#mysql-support)
     1. [Run Docker container](#run-docker-container)
 1. [License](#license)
@@ -86,7 +85,8 @@ Unset environment variables have no effect on the
         ```
 
     1. ZSH example:
-    :warning: if using the the z-shell (`zsh`) then you'll need to modify how you run the container.
+
+       :warning: if using the the z-shell (`zsh`) then you'll need to modify how you run the container.
 
         ```console
         sudo docker run \
