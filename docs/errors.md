@@ -1,1 +1,1 @@
-## Errors
+# docker-senzing-console errors
