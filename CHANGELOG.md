@@ -189,4 +189,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added in 1.0.0
 
-- A copy of [Senzing/docker-senzing-debug](https://github.com/Senzing/docker-senzing-debug) with modifications from "debug" to "console"
+- A copy of [Senzing/docker-senzing-debug](https://github.com/senzing-garage/docker-senzing-debug) with modifications from "debug" to "console"
