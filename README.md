@@ -1,5 +1,17 @@
 # docker-senzing-console
 
+If you are beginning your journey with
+[Senzing](https://senzing.com/),
+please start with
+[Senzing Quick Start guides](https://docs.senzing.com/quickstart/).
+
+You are in the
+[Senzing Garage](https://github.com/senzing-garage)
+where projects are "tinkered" on.
+Although this GitHub repository may help you understand an approach to using Senzing,
+it's not considered to be "production ready" and is not considered to be part of the Senzing product.
+Heck, it may not even be appropriate for your application of Senzing!
+
 ## Synopsis
 
 The `senzing/senzing-console` docker image is used for creating
@@ -30,12 +42,12 @@ Python commands located in `/opt/senzing/g2/python` can be run in the docker con
 1. :pencil2: - A "pencil" icon means that the instructions may need modification before performing.
 1. :warning: - A "warning" icon means that something tricky is happening, so pay attention.
 
-## Expectations
+### Expectations
 
 - **Space:** This repository and demonstration require 6 GB free disk space.
 - **Time:** Budget 40 minutes to get the demonstration up-and-running, depending on CPU and network speeds.
 - **Background knowledge:** This repository assumes a working knowledge of:
-  - [Docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
+  - [Docker](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/docker.md)
 
 ## Demonstrate using Docker
 
@@ -45,7 +57,7 @@ Python commands located in `/opt/senzing/g2/python` can be run in the docker con
 These are "one-time tasks" which may already have been completed.
 
 1. The following software programs need to be installed:
-    1. [docker](https://github.com/Senzing/knowledge-base/blob/main/WHATIS/docker.md)
+    1. [docker](https://github.com/senzing-garage/knowledge-base/blob/main/WHATIS/docker.md)
 
 ### MySQL support
 
@@ -101,7 +113,7 @@ for the software container in this Docker image.
 Note that this license does not permit further distribution.
 
 This Docker image may also contain software from the
-[Senzing GitHub community](https://github.com/Senzing/)
+[Senzing GitHub community](https://github.com/senzing-garage/)
 under the
 [Apache License 2.0](https://www.apache.org/licenses/LICENSE-2.0).
 

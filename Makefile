@@ -22,7 +22,7 @@ default: help
 .PHONY: docker-build
 docker-build:
 	docker build \
-	    --tag $(DOCKER_IMAGE_NAME) \
+		--tag $(DOCKER_IMAGE_NAME) \
 		--tag $(DOCKER_IMAGE_NAME):$(GIT_VERSION) \
 		.
 
@@ -30,7 +30,7 @@ docker-build:
 docker-build-slim:
 	docker build \
 		--file Dockerfile-slim \
-	    --tag $(DOCKER_IMAGE_NAME)-slim \
+		--tag $(DOCKER_IMAGE_NAME)-slim \
 		--tag $(DOCKER_IMAGE_NAME)-slim:$(GIT_VERSION) \
 		.
 
