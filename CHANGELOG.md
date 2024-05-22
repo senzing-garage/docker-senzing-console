@@ -10,11 +10,27 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 -
 
+## [1.2.10] - 2024-05-22
+
+### Changed in 1.2.10
+
+- In `Dockerfile`, updated FROM instruction to `senzing/senzingapi-tools:3.10.1`
+- In `requirements.txt`, updated:
+  - csvkit==2.0.0
+  - Flask==3.0.3
+  - orjson==3.10.3
+  - pandas==2.2.2
+  - prettytable==3.10.0
+  - python-engineio==4.9.1
+  - python-socketio==5.11.2
+  - setuptools==70.0.0
+  - VisiData==3.0.2
+
 ## [1.2.9] - 2023-09-29
 
 ### Changed in 1.2.9
 
-- In `Dockerfile`, updated FROM instruction to `senzing/senzingapi-runtime:3.7.1`
+- In `Dockerfile`, updated FROM instruction to `senzing/senzingapi-tools:3.7.1`
 - In `requirements.txt`, updated:
   - Flask-SocketIO==5.3.6
   - Flask==2.3.3
@@ -31,7 +47,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed in 1.2.8
 
-- In `Dockerfile`, updated FROM instruction to `senzing/senzingapi-runtime:3.5.3`
+- In `Dockerfile`, updated FROM instruction to `senzing/senzingapi-tools:3.5.3`
 - In `requirements.txt`, updated:
   - orjson==3.9.1
   - pandas==2.0.2

@@ -2,7 +2,7 @@ ARG BASE_IMAGE=senzing/senzingapi-tools:3.10.1
 
 ARG IMAGE_NAME="senzing/senzing-console"
 ARG IMAGE_MAINTAINER="support@senzing.com"
-ARG IMAGE_VERSION="1.2.9"
+ARG IMAGE_VERSION="1.2.10"
 
 # -----------------------------------------------------------------------------
 # Stage: builder
@@ -23,27 +23,27 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
- && apt-get -y install \
-      gcc \
-      make \
-      pkg-config \
-      unzip \
-      wget \
- && rm -rf /var/lib/apt/lists/*
+  && apt-get -y install \
+  gcc \
+  make \
+  pkg-config \
+  unzip \
+  wget \
+  && rm -rf /var/lib/apt/lists/*
 
 # Work around until Debian repos catch up to modern versions of fio.
 
 RUN mkdir /tmp/fio \
- && cd /tmp/fio \
- && wget https://github.com/axboe/fio/archive/refs/tags/fio-3.30.zip \
- && unzip fio-3.30.zip \
- && cd fio-fio-3.30/ \
- && ./configure \
- && make \
- && make install \
- && fio --version \
- && cd \
- && rm -rf /tmp/fio
+  && cd /tmp/fio \
+  && wget https://github.com/axboe/fio/archive/refs/tags/fio-3.30.zip \
+  && unzip fio-3.30.zip \
+  && cd fio-fio-3.30/ \
+  && ./configure \
+  && make \
+  && make install \
+  && fio --version \
+  && cd \
+  && rm -rf /tmp/fio
 
 # -----------------------------------------------------------------------------
 # Stage: Final
@@ -58,8 +58,8 @@ ARG IMAGE_MAINTAINER
 ARG IMAGE_VERSION
 
 LABEL Name=${IMAGE_NAME} \
-      Maintainer=${IMAGE_MAINTAINER} \
-      Version=${IMAGE_VERSION}
+  Maintainer=${IMAGE_MAINTAINER} \
+  Version=${IMAGE_VERSION}
 
 # Define health check.
 
@@ -74,31 +74,31 @@ USER root
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update \
- && apt-get -y install \
-      elvis-tiny \
-      htop \
-      iotop \
-      jq \
-      net-tools \
-      openssh-server \
-      postgresql-client \
-      procps \
-      python3-dev \
-      python3-pip \
-      python3-pyodbc \
-      strace \
-      tree \
-      unzip \
-      wget \
-      zip \
- && rm -rf /var/lib/apt/lists/*
+  && apt-get -y install \
+  elvis-tiny \
+  htop \
+  iotop \
+  jq \
+  net-tools \
+  openssh-server \
+  postgresql-client \
+  procps \
+  python3-dev \
+  python3-pip \
+  python3-pyodbc \
+  strace \
+  tree \
+  unzip \
+  wget \
+  zip \
+  && rm -rf /var/lib/apt/lists/*
 
 # Install packages via pip.
 
 COPY requirements.txt .
 RUN pip3 install --upgrade pip \
- && pip3 install -r requirements.txt \
- && rm /requirements.txt
+  && pip3 install -r requirements.txt \
+  && rm /requirements.txt
 
 # Copy files from repository.
 
@@ -111,7 +111,7 @@ COPY --from=builder "/usr/local/bin/fio" "/usr/local/bin/fio"
 # Runtime environment variables.
 
 ENV SENZING_ETC_PATH=/etc/opt/senzing \
-    SENZING_SSHD_SHOW_PERFORMANCE_WARNING=true
+  SENZING_SSHD_SHOW_PERFORMANCE_WARNING=true
 
 # Runtime execution.
 
