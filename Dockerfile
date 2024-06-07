@@ -108,6 +108,8 @@ COPY ./rootfs /
 
 COPY --from=builder "/usr/local/bin/fio" "/usr/local/bin/fio"
 
+USER 1001
+
 # Runtime environment variables.
 
 ENV SENZING_ETC_PATH=/etc/opt/senzing \
