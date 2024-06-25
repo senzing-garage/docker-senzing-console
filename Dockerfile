@@ -2,7 +2,7 @@ ARG BASE_IMAGE=senzing/senzingapi-tools:3.10.3
 
 ARG IMAGE_NAME="senzing/senzing-console"
 ARG IMAGE_MAINTAINER="support@senzing.com"
-ARG IMAGE_VERSION="1.2.10"
+ARG IMAGE_VERSION="1.2.11"
 
 # -----------------------------------------------------------------------------
 # Stage: builder
