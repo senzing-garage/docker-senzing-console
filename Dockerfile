@@ -20,7 +20,7 @@ USER root
 
 # Install packages via apt for building fio.
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
   && apt-get -y install \
@@ -71,7 +71,7 @@ USER root
 
 # Install packages via apt.
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
   && apt-get -y install \
