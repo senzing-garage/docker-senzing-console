@@ -1,4 +1,4 @@
-ARG BASE_IMAGE=senzing/senzingapi-tools:3.10.3
+ARG BASE_IMAGE=senzing/senzingapi-tools:3.10.3@sha256:03d53ed1e0c4cb38f90c10202208d0c65e7eb5220c44ca6e4d4c8cb8cbf8f01f
 
 ARG IMAGE_NAME="senzing/senzing-console"
 ARG IMAGE_MAINTAINER="support@senzing.com"
