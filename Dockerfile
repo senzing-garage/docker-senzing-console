@@ -39,7 +39,7 @@ RUN mkdir /tmp/fio \
 
 WORKDIR /tmp/fio/fio-fio-3.30
 
-RUN /tmp/fio/fio-fio-3.30/configure \
+RUN ./configure \
   && make \
   && make install \
   && fio --version \
