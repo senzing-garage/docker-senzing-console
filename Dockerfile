@@ -23,7 +23,7 @@ USER root
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-  && apt-get -y install \
+  && apt-get -y --no-install-recommends install \
   gcc \
   make \
   pkg-config \
@@ -34,15 +34,15 @@ RUN apt-get update \
 # Work around until Debian repos catch up to modern versions of fio.
 
 RUN mkdir /tmp/fio \
-  && cd /tmp/fio \
-  && wget https://github.com/axboe/fio/archive/refs/tags/fio-3.30.zip \
-  && unzip fio-3.30.zip \
-  && cd fio-fio-3.30/ \
-  && ./configure \
+  && wget -P /tmp/fio https://github.com/axboe/fio/archive/refs/tags/fio-3.30.zip \
+  && unzip /tmp/fio/fio-3.30.zip
+
+WORKDIR /tmp/fio/fio-fio-3.30
+
+RUN ./configure \
   && make \
   && make install \
   && fio --version \
-  && cd \
   && rm -rf /tmp/fio
 
 # -----------------------------------------------------------------------------
@@ -74,7 +74,7 @@ USER root
 ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
-  && apt-get -y install \
+  && apt-get -y --no-install-recommends install \
   elvis-tiny \
   htop \
   iotop \
