@@ -35,11 +35,8 @@ RUN apt-get update \
 
 RUN mkdir /tmp/fio \
   && wget -P /tmp/fio https://github.com/axboe/fio/archive/refs/tags/fio-3.30.zip \
-  && unzip /tmp/fio/fio-3.30.zip
-
-WORKDIR /tmp/fio/fio-fio-3.30
-
-RUN ./configure \
+  && unzip /tmp/fio/fio-3.30.zip \
+  && /tmp/fio/fio-fio-3.30/configure \
   && make \
   && make install \
   && fio --version \
